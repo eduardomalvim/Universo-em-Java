@@ -10,7 +10,7 @@ public class Planeta extends Astro{
 
     public void Tipo(){
 
-        String tipo = getTipoObjeto();
+        String tipo = tipoObjeto;
         if("Gigante gasoso".equalsIgnoreCase(tipo)){
             giganteGasoso = true;
             planetaRochoso = false;

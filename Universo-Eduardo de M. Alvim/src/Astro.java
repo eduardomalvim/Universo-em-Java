@@ -1,6 +1,6 @@
 import java.lang.Math;
 
-public class Astro {
+public abstract class Astro {
 
     public double constanteGravitacional = (6.674 * Math.pow(10, -11));
     private double massa;
@@ -8,13 +8,13 @@ public class Astro {
     private double gravidade;
     private double densidade;
     private double densidadeCentral;
-    private String tipoObjeto;
-    private float k;
+    public String tipoObjeto;
+    public float k;
 
-    public double Gravidade(double massa, double raio){     // N⋅m²/kg²
+    public double Gravidade(double massa, double raio){     //
 
-        double g = (constanteGravitacional * (massa/Math.pow(raio, 2)));
-        return gravidade = g;
+        gravidade = (constanteGravitacional * (massa/Math.pow(raio, 2)));
+        return gravidade;
     }
 
     public double Densidade(double massa, double raio){     // kg/m³
@@ -35,10 +35,10 @@ public class Astro {
 
         if(densidade < 1000){tipoObjeto = "Gigante Gasoso"; k = 15;}else
         if(densidade < 2000){tipoObjeto = "Estrela"; k = 105;}else
+        if(densidade < 5000){tipoObjeto = "Asteroide"; k = 1;}else
         if(densidade < 6000){tipoObjeto = "Planeta Rochoso"; k = 1;}else
         if(densidade < 1e10){tipoObjeto = "Estrela Anã"; k = 1000;}else
         if(densidade < 1e17){tipoObjeto = "Estrela de Neutrons"; k = 1;}
-        else{tipoObjeto = "Buraco Negro"; k = 1;}
     }
 
     public double getMassa(){return massa;}
@@ -52,8 +52,4 @@ public class Astro {
     public double getDensidade(){return densidade;}
 
     public double getDensidadeCentral(){return densidadeCentral;}
-
-    public String getTipoObjeto(){return tipoObjeto;}
-
-    public float getK(){return k;}
 }
