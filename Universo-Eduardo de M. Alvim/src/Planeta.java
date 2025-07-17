@@ -3,30 +3,37 @@ import java.util.Objects;
 public class Planeta extends Astro{
 
     private boolean habitabilidade;
-    private boolean possuiAgua;
-    private boolean areaHabitavelEstelar;
+    private boolean possuiAgua = true;
+    private boolean areaHabitavelEstelar = true;
     private boolean giganteGasoso;
-    private boolean planetaRochoso;
+    public boolean planetaRochoso;
 
-    private void Tipo(){
+    public void Tipo(){
 
-        if(Objects.equals(getTipoObjeto(), "Gigante gasoso")){
+        String tipo = getTipoObjeto();
+        if("Gigante gasoso".equalsIgnoreCase(tipo)){
             giganteGasoso = true;
             planetaRochoso = false;
         }
-        else if(Objects.equals(getTipoObjeto(), "Planeta rochoso")){
+        else if("Planeta Rochoso".equalsIgnoreCase(tipo)){
             planetaRochoso = true;
             giganteGasoso = false;
+        }else{
+            giganteGasoso = false;
+            planetaRochoso = false;
         }
     }
 
-    public boolean Habitabilidade(boolean possuiAgua, boolean areaHabitavelEstelar, boolean planetaRochoso){
+    public boolean Habitabilidade(){
+
         if(possuiAgua == true && areaHabitavelEstelar == true && planetaRochoso == true){
 
-            return this.habitabilidade = true;
+            return habitabilidade = true;
         }
         else{
-            return this.habitabilidade = false;
+            return habitabilidade = false;
         }
     }
+
+    public boolean getHabitabilidade(){return habitabilidade;}
 }
